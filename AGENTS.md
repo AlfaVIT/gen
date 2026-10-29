@@ -10,7 +10,7 @@
 | Git | `https://github.com/AlfaVIT/gen.git`, основная ветка `main` |
 | FTP | `opensite.myjino.ru:21`, логин `opensite_gen`, пароль — в `ftp.txt` (в git не попадает) |
 | FTPS/SFTP | порт `2222` |
-| Стек | PHP 7.4 (alt-php, см. `.envrc`), SQLite (`storage/app.sqlite`), без фреймворка |
+| Стек | PHP 8.4 (alt-php, см. `.envrc`), SQLite (`storage/app.sqlite`), без фреймворка |
 
 ## Деплой
 

@@ -110,7 +110,7 @@ function csrfField()
 
 function checkCsrf()
 {
-    $token = isset($_POST['csrf']) ? (string)$_POST['csrf'] : '';
+    $token = isset($_POST['csrf']) && is_string($_POST['csrf']) ? $_POST['csrf'] : '';
     if ($token === '' || !hash_equals($_SESSION['__csrf'] ?? '', $token)) {
         http_response_code(419);
         exit('Неверный CSRF-токен. Обновите страницу и повторите действие.');
@@ -119,12 +119,18 @@ function checkCsrf()
 
 function postStr($key, $def = '')
 {
-    return isset($_POST[$key]) ? trim((string)$_POST[$key]) : $def;
+    if (!isset($_POST[$key]) || !is_scalar($_POST[$key])) {
+        return $def;
+    }
+    return trim((string)$_POST[$key]);
 }
 
 function getStr($key, $def = '')
 {
-    return isset($_GET[$key]) ? trim((string)$_GET[$key]) : $def;
+    if (!isset($_GET[$key]) || !is_scalar($_GET[$key])) {
+        return $def;
+    }
+    return trim((string)$_GET[$key]);
 }
 
 function isPost()

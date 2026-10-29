@@ -43,7 +43,7 @@ require_once __DIR__ . '/app/pages_media.php';
 require_once __DIR__ . '/app/pages_admin.php';
 require_once __DIR__ . '/app/pages_api.php';
 
-$p = isset($_GET['p']) ? trim((string)$_GET['p']) : '';
+$p = getStr('p');
 if ($p === '') {
     $p = isLoggedIn() ? 'trees' : 'home';
 }
