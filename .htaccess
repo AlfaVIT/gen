@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<FilesMatch "\.(sqlite|sqlite3|db|log|inc)$">
+    Require all denied
+</FilesMatch>
+
+# Если сервер поддерживает mod_rewrite — дополнительно защищаем служебные каталоги
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^storage/ - [F,L]
+    RewriteRule ^app/ - [F,L]
+</IfModule>

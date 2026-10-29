@@ -1,0 +1,12 @@
+# Игнорируем данные и пользовательский контент (см. правила на хостинге)
+storage/*
+!storage/.htaccess
+!storage/index.html
+uploads/*
+!uploads/.htaccess
+!uploads/index.html
+storage/app.sqlite*
+*.log
+
+# Учётные данные FTP — не коммитить
+ftp.txt
