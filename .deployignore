@@ -1,0 +1,6 @@
+# Что не заливать на хостинг (шаблоны в стиле .gitignore, регистр не важен)
+.deployignore
+.deploy_state
+deploy.ps1
+ftp.txt
+*.md

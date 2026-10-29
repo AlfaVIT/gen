@@ -10,3 +10,6 @@ storage/app.sqlite*
 
 # Учётные данные FTP — не коммитить
 ftp.txt
+
+# Служебное состояние деплоя
+.deploy_state
