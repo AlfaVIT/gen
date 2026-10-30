@@ -11,3 +11,20 @@ DirectoryIndex index.php
     RewriteRule ^storage/ - [F,L]
     RewriteRule ^app/ - [F,L]
 </IfModule>
+
+# Не раскрывать версию PHP в заголовке X-Powered-By.
+# Обе директивы закрыты проверкой модуля: если модуля нет, Apache строку просто
+# пропустит вместо ошибки 500 на весь сайт.
+<IfModule mod_headers.c>
+    Header unset X-Powered-By
+</IfModule>
+
+<IfModule mod_php.c>
+    php_flag expose_php off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag expose_php off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag expose_php off
+</IfModule>
