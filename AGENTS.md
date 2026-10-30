@@ -31,5 +31,6 @@
 
 - **Не коммитить и не заливать**: `ftp.txt`, `storage/app.sqlite`, `uploads/*` (пользовательские файлы). Это уже задано в `.gitignore` и серверном `.gitignore`.
 - Текстовые файлы — LF (`.gitattributes` `* text=auto eol=lf`), хостинг Linux.
+- Версия PHP не раскрывается: в `.htaccess` стоит `Header always unset X-Powered-By` внутри `<IfModule mod_headers.c>` (именно `always` — заголовки бэкенда лежат в `err_headers_out`). `php_flag expose_php off` там же под `<IfModule mod_php*.c>` — сработает только на mod_php; на этом хостинге PHP-FPM, поэтому работает вариант с mod_headers.
 - Структура: `index.php` (точка входа) → `app/bootstrap.php`, `app/config.php`, `app/inc/*` (auth, db, genealogy, media, upload, mailer, xml), `app/pages_*.php` (контроллеры), `app/views/*` (шаблоны), статика в `assets/`.
 - После правок в `app/` проверять работоспособность на https://gen.opensite.su/ (админка и загрузка медиа — основные уязвимые места).
