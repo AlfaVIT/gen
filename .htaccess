@@ -16,7 +16,9 @@ DirectoryIndex index.php
 # Обе директивы закрыты проверкой модуля: если модуля нет, Apache строку просто
 # пропустит вместо ошибки 500 на весь сайт.
 <IfModule mod_headers.c>
-    Header unset X-Powered-By
+    # именно always: заголовки от PHP-FPM/бэкенда попадают в таблицу err_headers_out,
+    # обычный "Header unset" их не видит
+    Header always unset X-Powered-By
 </IfModule>
 
 <IfModule mod_php.c>
